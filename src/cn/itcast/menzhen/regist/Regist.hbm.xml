@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.itcast.menzhen.regist.Regist" table="t_register">
+		<!-- 配置唯一标识 -->
+		<id name="r_id" column="r_id">
+			<generator class="native"/>
+		</id>
+		<!-- 配置普通属性 -->
+		<property name="h_name" column="h_name"/>
+		<property name="username" column="name"/>
+		<property name="r_name" column="r_name"/>
+		<property name="r_status" column="r_status"/>
+		<property name="r_age" column="r_age"/>
+		<property name="r_sex" column="r_sex"/>
+		<property name="r_sympton" column="r_sympton"/>
+		<property name="r_date" column="r_date"/>
+	</class>
+</hibernate-mapping>

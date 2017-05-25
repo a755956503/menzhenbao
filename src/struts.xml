@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.enable.DynamicMethodInvocation" value="true" />
+
+    <package name="default" namespace="/" extends="struts-default">
+        
+    	<interceptors>
+    		<interceptor name="loginInterceptor" class="cn.itcast.menzhen.interceptor.LoginInterceptor"/>
+    		
+    	</interceptors>
+    	
+    	<global-results>
+    		<result name="msg">/WEB-INF/jsp/msg.jsp</result>
+    		<result name="login">/admin/index.jsp</result>
+    	</global-results>
+
+    
+		<!-- 配置首页访问的Action -->
+		<action name="index" class="indexAction">
+			<result name="indexSuccess">/WEB-INF/jsp/index.jsp</result>
+		</action>
+		
+		<!-- 配置用户的Action -->
+		<action name="user_*" class="userAction" method="{1}">
+			<result name="registPageSuccess">/WEB-INF/jsp/regist.jsp</result>
+			<result name="registInput">/WEB-INF/jsp/regist.jsp</result>
+			<result name="loginInput">/WEB-INF/jsp/login.jsp</result>
+			<result name="registSuccess">/WEB-INF/jsp/msg.jsp</result>
+			<result name="activeSuccess">/WEB-INF/jsp/msg.jsp</result>
+			<result name="loginPageSuccess">/WEB-INF/jsp/login.jsp</result>
+			<result name="loginSuccess" type="redirectAction">index</result>
+			<result name="quitSuccess" type="redirectAction">index</result>
+			
+		</action>
+		
+		<!-- 配置验证码的Action -->
+		<action name="checkImg" class="checkImg"></action>
+		
+		<action name="regist_*" class="registAction" method="{1}">
+			<result name="hFindAllSuccess">/WEB-INF/jsp/manage.jsp</result>
+			<result name="findAllSuccess">/WEB-INF/jsp/registlist.jsp</result>
+			<result name="intoSuccess">/WEB-INF/jsp/hospital.jsp</result>
+			<result name="intoFailed">/WEB-INF/jsp/msg.jsp</result>
+		</action>
+		<action name="hospital_*" class="hospitalAction" method="{1}">
+			<result name="saveHospitalSuccess">/WEB-INF/jsp/msg.jsp</result>
+			<result name="intoOpenSuccess">/WEB-INF/jsp/openhospital.jsp</result>
+			<result name="intoOpenFailed">/WEB-INF/jsp/msg.jsp</result>
+		</action>
+    </package>
+    
+    
+
+</struts>
